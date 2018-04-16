@@ -14,7 +14,7 @@ public class TestConroller {
 	
 	@RequestMapping("index")
 	public String testIndex(){
-		int count = testService.selectCount();
-		return "index";
+//		int count = testService.selectCount();
+		return "manager_index";
 	}
 }

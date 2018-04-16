@@ -14,4 +14,7 @@ public interface Spu_Publish_Service {
 	//第二步：往商品图片表添加图片
 	void insert_product_image(int id, List<String> upload_images);
 
+	//根据一级分类、二级分类和商标id查询所有的商品信息
+	List<T_MALL_PRODUCT> select_spu_by_class_1_2_tm_id(int class_1_id, int class_2_id, int tm_id);
+
 }

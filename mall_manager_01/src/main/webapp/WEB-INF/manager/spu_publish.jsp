@@ -39,6 +39,16 @@
 		});
 	}
 
+//商标选择完后，根据一级分类id、二级分类id、商标id显示所有商品列表
+	function get_spu_by_class_1_2_tm_id(){
+		var a = $("#select_class_1").val();
+		var b = $("#select_class_2").val();
+		var c = $("#select_trade_mark").val();
+		$.post("select_spu_by_class_1_2_tm_id.do",{"class_1_id":a,"class_2_id":b,"tm_id":c},function(data){
+			
+		})
+	}
+
 // 	点击缩略图，相当于点击隐藏的文件上传
 	function index_img_click(index){
 		$("#index_file_"+index).click();
@@ -74,12 +84,17 @@
 		一级分类：<select name="flbh1" id="select_class_1" onchange="javascript:class_2_tm_by_class_1_id(this.value)"><option>--请选择--</option></select><br>
 		二级分类：<select name="flbh2" id="select_class_2"></select><br>
 		商品：<select name="pp_id" id="select_trade_mark"></select><br>
+		
+<!-- 		<button id="index_add_spu">添加商品</button>  onchange="javascript:get_spu_by_class_1_2_tm_id()"-->
+		
 		<hr>
-		商品名称：<input type="text" name="shp_mch"/><br>
-		商品描述：<input type="text" name="shp_msh"/><br>
-		<div id="img_div">
-			<img id="index_img_0" src="image/upload_hover.png" width="70px" style="cursor: pointer;" onclick="index_img_click(0)">
-			<input id="index_file_0" style="display:none;" onchange="index_img_change(0)" type="file" name="files"/>
+		<div id="index_spu_inner">
+			商品名称：<input type="text" name="shp_mch"/><br>
+			商品描述：<input type="text" name="shp_msh"/><br>
+			<div id="img_div">
+				<img id="index_img_0" src="image/upload_hover.png" width="70px" style="cursor: pointer;" onclick="index_img_click(0)">
+				<input id="index_file_0" style="display:none;" onchange="index_img_change(0)" type="file" name="files"/>
+			</div>
 		</div>
 		<br>
 		<input type="submit" value="发布spu信息"/>

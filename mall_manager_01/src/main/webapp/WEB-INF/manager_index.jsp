@@ -17,7 +17,7 @@
 <title>后台管理系统</title>
 </head>
 <body>
-	<a href="goto_Spu_Publish.do">分类属性管理</a><br>
+	<a href="goto_Spu_Publish.do" target="_blank">分类属性管理</a><br>
 	<a href="">商品信息发布</a><br>
 	<a href="">库存信息发布</a><br>
 	<a href="">商品和库存发布</a><br>

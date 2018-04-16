@@ -2,17 +2,32 @@
 <!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.bocai.mapper.Spu_Publish_Mapper">
 	
+<!-- 添加商品 -->
 	<insert id="insert_product" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
 		insert into t_mall_product(shp_mch,shp_tp,flbh1,flbh2,pp_id,shp_msh)
 		values(#{shp_mch},#{shp_tp},#{flbh1},#{flbh2},#{pp_id},#{shp_msh})
 	</insert>
-
+<!-- 添加商品图片 -->
 	<insert id="insert_product_image" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
 		insert into t_mall_product_image(shp_id,url)
 		values
 		<foreach collection="upload_images" separator="," item="image">
 			(#{id},#{image})
 		</foreach>
-		
 	</insert>
+<!-- 通过一级分类id、二级分类id和商标id查询对应的商品集合 -->
+	<select id="select_spu_by_class_1_2_tm_id" resultType="com.bocai.bean.T_MALL_PRODUCT">
+		select * from t_mall_product
+		<where>
+			<if test="class_1_id!=0">
+				and flbh1=#{class_1_id}
+			</if>
+			<if test="class_2_id!=0">
+				and flbh2=#{class_2_id}
+			</if>
+			<if test="tm_id!=0">
+				and pp_id=#{tm_id}
+			</if>
+		</where>
+	</select>
 </mapper>
